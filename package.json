@@ -2,11 +2,10 @@
   "name": "sql_generator",
   "packageManager": "yarn@3.5.1",
   "scripts": {
-    "generate:full": "mkdir temp/ output/ && openapi-generator-cli generate -i input/*.yml -g mysql-schema -o temp/ && mv temp/{.,}* output/ && rm -rf temp/",
-    "move": "mkdir output/ && mv temp/mysql_schema.sql output/mysql_schema.sql",
-    "generate": "yarn generate:full && yarn move && rm -rf temp",
-    "reset:hard": "rm -rf output input/*",
-    "reset": "rm -rf output"
+    "generate:full": "mkdir output/ && openapi-generator-cli generate -i input/*.yml -g mysql-schema -o output/",
+    "generate": "yarn generate:full && find ./output -type f,d ! -name 'mysql_schema.sql' -delete",
+    "reset:hard": "rm -rf output temp input/*",
+    "reset": "rm -rf output temp"
   },
   "dependencies": {
     "@openapitools/openapi-generator-cli": "^2.6.0"
