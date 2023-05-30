@@ -11,5 +11,6 @@
 .pnp.*
 
 input/*
+!input/dummy.yml
 output
 temp
